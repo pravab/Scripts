@@ -1,4 +1,4 @@
-testsample
+leaflet_maps
 ==========
 
-Sample repo for testing
+Sample repo for leaflet maps
