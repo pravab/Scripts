@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title> Sample demos to updating Backbone.js Prototype </title>
+</head>
+<script src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script src="lib/underscore.js/1.5.1/underscore-min.js"></script>
+<script src="lib/backbone.js/1.0.0/backbone-min.js"></script>
+
+<body>
+  <script type="text/javascript">
+   //The script below is to demo how easy it is to add more to functionality to methods standard provided by backbone.js prototypes.
+   //This example takes the Backbone.View.prototype and demos how to add more to the render method, create a new version of render(say myrender),
+   //or create a new event(say mynewevent) 
+   _.extend(Backbone.View.prototype, Backbone.Events, {
+   	 render: function() {
+   	 	console.log('This is a test');
+      //this.mynewevent();
+      return this;
+      
+    },
+     myrender: function() {
+     	console.log('Pre-render work');
+     	this.render();
+     },
+     mynewevent: function() {
+     	console.log('This is my new event');
+     }
+  });
+ 
+  var testView = Backbone.View.extend({
+  });
+    
+  var testview = new testView();
+  testview.render(); //console logs the test message for every call to render
+  testview.myrender();//calls the new version of render which can do some pre-render work than call render
+    					//if the call to mynewevent() is uncommented, the render method makes a call to our new event as well
+
+  </script>
+</body>
+</html>
